@@ -1,50 +1,42 @@
-import unittest
-import sys
-sys.path.append('..')
+def area(a, h) :
+    """
+    вычисляет площадь треугольника
+        параметры:
+            a (float) : длина стороны
+            h (float) : высота, опущенная на сторону a
+        результат:
+            float : площадь треугольника 
+        примеры:
+            >>> area(2, 4)
+            4.0
+            >>> area(5, 6)
+            15.0
+    """
+    if a < 0:
+        raise ValueError(f"Основание не может быть отрицательным: {a}")
+    if h < 0:
+        raise ValueError(f"Высота не может быть отрицательной: {h}")
+    return 0.5 * a * h
 
-from triangle import area, perimeter
-
-
-class TriangleAreaTestCase(unittest.TestCase):
-    """Тесты для функции area() модуля triangle"""
-    
-    def test_area_base_2_height_4(self):
-        """Площадь треугольника a=2, h=4"""
-        self.assertEqual(area(2, 4), 4.0)
-    
-    def test_area_base_5_height_6(self):
-        """Площадь треугольника a=5, h=6"""
-        self.assertEqual(area(5, 6), 15.0)
-    
-    def test_area_zero_base(self):
-        """Площадь треугольника с нулевым основанием"""
-        self.assertEqual(area(0, 5), 0)
-    
-    def test_area_zero_height(self):
-        """Площадь треугольника с нулевой высотой"""
-        self.assertEqual(area(5, 0), 0)
-    
-    def test_area_both_zero(self):
-        """Площадь треугольника с нулевыми значениями"""
-        self.assertEqual(area(0, 0), 0)
-    
-    def test_area_float_values(self):
-        """Площадь треугольника с вещественными числами"""
-        self.assertEqual(area(3.5, 4.0), 7.0)
-    
-    def test_area_large_values(self):
-        """Площадь треугольника с большими значениями"""
-        self.assertEqual(area(1000, 2000), 1000000)
-    
-    def test_area_small_values(self):
-        """Площадь треугольника с маленькими значениями"""
-        self.assertAlmostEqual(area(0.2, 0.5), 0.05, places=5)
-    
-    def test_area_negative_base_raises_error(self):
-        """Отрицательное основание вызывает ValueError"""
-        with self.assertRaises(ValueError):
-            area(-3, 4)
-    
-    def test_area_negative_height_raises_error(self):
-        """Отрицательная высота вызывает ValueError"""
-        with 
+def perimeter(a, b, c):
+    """
+    вычисляет периметр треугольника 
+        параметры:
+            a (float) : длина первой стороны трегольника
+            b (float) : длина второй стороны треугольника
+            c (float) : длина третьей стороны треугольника
+        результат:
+            float : периметр треугольника
+        примеры:
+            >>> perimeter(2, 3, 4)
+            9.0
+            >>> perimeter(5, 6, 7)
+            18.0
+    """
+    if a < 0:
+        raise ValueError(f"Сторона a не может быть отрицательной: {a}")
+    if b < 0:
+        raise ValueError(f"Сторона b не может быть отрицательной: {b}")
+    if c < 0:
+        raise ValueError(f"Сторона c не может быть отрицательной: {c}")
+    return a + b + c
